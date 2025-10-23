@@ -1,0 +1,198 @@
+﻿<Window x:Class="ShareIsCare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ShareIsCare" Height="700" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- URL Input -->
+        <GroupBox Header="Video URL" Grid.Row="0" Margin="0,0,0,10">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="UrlTextBox" Grid.Column="0" 
+                         VerticalAlignment="Center" Padding="5"
+                         ToolTip="Enter video URL or playlist URL"/>
+                <Button x:Name="GetInfoButton" Grid.Column="1" 
+                        Content="Get Info" Width="80" Margin="5,0,0,0"
+                        Click="GetInfoButton_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- Format Selection -->
+        <GroupBox Header="Format and Quality" Grid.Row="1" Margin="0,0,0,10">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Download Type:" Grid.Row="0" Grid.Column="0" 
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="DownloadTypeCombo" Grid.Row="0" Grid.Column="1" 
+                          SelectedIndex="0" SelectionChanged="DownloadTypeCombo_SelectionChanged">
+                    <ComboBoxItem Content="Video + Audio (Best)"/>
+                    <ComboBoxItem Content="Audio Only"/>
+                    <ComboBoxItem Content="Video Only"/>
+                    <ComboBoxItem Content="Custom Format"/>
+                </ComboBox>
+
+                <TextBlock Text="Quality:" Grid.Row="0" Grid.Column="2" 
+                           VerticalAlignment="Center" Margin="10,0,10,0"/>
+                <ComboBox x:Name="QualityCombo" Grid.Row="0" Grid.Column="3" 
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Best"/>
+                    <ComboBoxItem Content="2160p (4K)"/>
+                    <ComboBoxItem Content="1440p (2K)"/>
+                    <ComboBoxItem Content="1080p"/>
+                    <ComboBoxItem Content="720p"/>
+                    <ComboBoxItem Content="480p"/>
+                    <ComboBoxItem Content="360p"/>
+                </ComboBox>
+
+                <TextBlock x:Name="FormatLabel" Text="Format String:" 
+                           Grid.Row="1" Grid.Column="0" 
+                           VerticalAlignment="Center" Margin="0,5,10,0"
+                           Visibility="Collapsed"/>
+                <TextBox x:Name="CustomFormatTextBox" Grid.Row="1" Grid.Column="1" 
+                         Grid.ColumnSpan="3" Margin="0,5,0,0" Padding="5"
+                         Visibility="Collapsed"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- Download Options -->
+        <GroupBox Header="Download Options" Grid.Row="2" Margin="0,0,0,10">
+            <StackPanel Margin="5">
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Output Path:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox x:Name="OutputPathTextBox" Grid.Column="1" 
+                             VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                    <Button Grid.Column="2" Content="Browse..." Width="80" 
+                            Margin="5,0,0,0" Click="BrowseButton_Click"/>
+                </Grid>
+
+                <WrapPanel Margin="0,5,0,0">
+                    <CheckBox x:Name="PlaylistCheckBox" Content="Download entire playlist" 
+                              Margin="0,0,15,5"/>
+                    <CheckBox x:Name="SubtitlesCheckBox" Content="Download subtitles" 
+                              Margin="0,0,15,5"/>
+                    <CheckBox x:Name="ThumbnailCheckBox" Content="Embed thumbnail" 
+                              Margin="0,0,15,5"/>
+                    <CheckBox x:Name="MetadataCheckBox" Content="Add metadata" 
+                              IsChecked="True" Margin="0,0,15,5"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Audio Options -->
+        <GroupBox Header="Audio Options (for Audio Only)" Grid.Row="3" Margin="0,0,0,10">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Audio Format:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="AudioFormatCombo" Grid.Column="1" SelectedIndex="0">
+                    <ComboBoxItem Content="mp3"/>
+                    <ComboBoxItem Content="m4a"/>
+                    <ComboBoxItem Content="opus"/>
+                    <ComboBoxItem Content="vorbis"/>
+                    <ComboBoxItem Content="flac"/>
+                    <ComboBoxItem Content="wav"/>
+                </ComboBox>
+
+                <TextBlock Text="Audio Quality:" Grid.Column="2" 
+                           VerticalAlignment="Center" Margin="10,0,10,0"/>
+                <ComboBox x:Name="AudioQualityCombo" Grid.Column="3" SelectedIndex="0">
+                    <ComboBoxItem Content="Best"/>
+                    <ComboBoxItem Content="320K"/>
+                    <ComboBoxItem Content="256K"/>
+                    <ComboBoxItem Content="192K"/>
+                    <ComboBoxItem Content="128K"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+
+        <!-- Advanced Options -->
+        <GroupBox Header="Advanced Options" Grid.Row="4" Margin="0,0,0,10">
+            <StackPanel Margin="5">
+                <WrapPanel Margin="0,0,0,5">
+                    <CheckBox x:Name="LimitRateCheckBox" Content="Limit download rate" 
+                              Margin="0,0,10,0" Checked="LimitRateCheckBox_Checked"
+                              Unchecked="LimitRateCheckBox_Unchecked"/>
+                    <TextBox x:Name="RateLimitTextBox" Width="60" Padding="3" 
+                             IsEnabled="False"/>
+                    <TextBlock Text="KB/s" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </WrapPanel>
+
+                <TextBlock Text="Additional Arguments:" Margin="0,5,0,3"/>
+                <TextBox x:Name="AdditionalArgsTextBox" Padding="5" 
+                         ToolTip="Add any custom yt-dlp arguments here"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Output/Progress -->
+        <GroupBox Header="Output" Grid.Row="5" Margin="0,0,0,10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBox x:Name="OutputTextBox" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap"
+                         FontFamily="Consolas"
+                         Background="#1E1E1E"
+                         Foreground="LightGray"
+                         Padding="5"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ProgressBar x:Name="DownloadProgressBar" Grid.Column="0" 
+                         Height="25" Margin="0,0,10,0"/>
+
+            <Button x:Name="DownloadButton" Grid.Column="1" 
+                    Content="Download" Width="100" Height="30" 
+                    Margin="0,0,10,0" Click="DownloadButton_Click"/>
+
+            <Button x:Name="StopButton" Grid.Column="2" 
+                    Content="Stop" Width="100" Height="30" 
+                    IsEnabled="False" Margin="0,0,10,0" 
+                    Click="StopButton_Click"/>
+
+            <Button x:Name="ClearButton" Grid.Column="3" 
+                    Content="Clear" Width="100" Height="30" 
+                    Click="ClearButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
