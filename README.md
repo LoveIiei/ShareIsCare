@@ -46,7 +46,11 @@ A modern, feature-rich Windows desktop application built with WPF and C# that pr
 
 ## Installation
 
-### Option 1: Build from Source
+### Option 1: Download the pre-build zip
+1. Choose the newest version from the [Release Page](https://github.com/LoveIiei/ShareIsCare/releases/)
+2. Follow the guidelines on that page
+
+### Option 2: Build from Source
 
 1. **Clone the repository**
    ```bash
@@ -69,7 +73,7 @@ A modern, feature-rich Windows desktop application built with WPF and C# that pr
    dotnet run
    ```
 
-### Option 2: Using Visual Studio
+### Option 3: Using Visual Studio
 
 1. Open `YtDlpGui.sln` in Visual Studio 2022 or later
 2. Ensure `yt-dlp.exe` is in the project with "Copy to Output Directory" set to "Copy if newer"
