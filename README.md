@@ -181,11 +181,11 @@ dotnet publish -c Release -r win-x64 --self-contained false
 dotnet publish -c Release -r win-x64 --self-contained true
 ```
 
-Output will be in `bin/Release/net6.0-windows/win-x64/publish/`
+Output will be in `bin/Release/{net-version}-windows/win-x64/publish/`
 
 ## Dependencies
 
-- **.NET 6.0** - Application framework
+- **.NET 6.0+** - Application framework
 - **yt-dlp** - Video downloading engine
 - **FFmpeg** (optional) - Media processing (usually bundled with yt-dlp)
 
