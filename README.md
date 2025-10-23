@@ -2,9 +2,8 @@
 
 A modern, feature-rich Windows desktop application built with WPF and C# that provides a graphical user interface for [yt-dlp](https://github.com/yt-dlp/yt-dlp), the popular command-line video downloader.
 
-![.NET](https://img.shields.io/badge/.NET-6.0-blue)
+![.NET](https://img.shields.io/badge/.NET-8.0-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
